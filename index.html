@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hexanest - Premium 3D Printed Solutions & IoT Systems. Elevate your workspace with our custom designs.">
+    <title>Hexanest | Premium 3D Prints & IoT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <header class="navbar">
+        <nav class="container">
+            <a href="index.html" class="logo">Hexa<span>nest</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content" data-reveal>
+                    <span class="category" style="color: var(--primary-color); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; display: block;">Innovation in 3D</span>
+                    <h1>Redefining Modern <br>Product Design.</h1>
+                    <p>Functional, aesthetic, and durable 3D printed solutions for your everyday problems. From desk organizers to IoT hubs, we build the future.</p>
+                    <div class="hero-btns">
+                        <a href="shop.html" class="btn btn-primary">Shop Collection</a>
+                        <a href="about.html" class="btn btn-outline">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div>
+                        <h2 class="section-title">New Arrivals</h2>
+                        <p class="section-subtitle">The latest from our workshop</p>
+                    </div>
+                    <a href="shop.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.75rem;">View All</a>
+                </div>
+                
+                <div class="grid">
+                    <!-- Featured Product 1 -->
+                    <div class="product-card" data-reveal data-product-key="phone-stand">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/phone-stand.jpg" alt="Wave Design Phone Stand">
+                        </div>
+                        <div class="product-info">
+                            <span class="category">Workspace</span>
+                            <h3>Wave Phone Stand</h3>
+                            <div class="product-price">₹249</div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Product 2 -->
+                    <div class="product-card" data-reveal style="transition-delay: 0.1s;" data-product-key="earphone_winder">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/earphone_winder.jpg" alt="Minimal Earphone Winder">
+                        </div>
+                        <div class="product-info">
+                            <span class="category">Accessories</span>
+                            <h3>Earphone Winder</h3>
+                            <div class="product-price">₹199</div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Product 3 -->
+                    <div class="product-card" data-reveal style="transition-delay: 0.2s;" data-product-key="shelf-clamp">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/shelf-clamp.jpg" alt="Shelf Edge Clamp">
+                        </div>
+                        <div class="product-info">
+                            <span class="category">Hardware</span>
+                            <h3>Desk Edge Clamp</h3>
+                            <div class="product-price">₹299</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-alt" style="margin: 60px 0; border-radius: 40px;">
+            <div class="container">
+                <div class="featured-row">
+                    <div class="featured-img" data-reveal>
+                        <img src="assets/images/pen-holder.jpg" alt="Hexanest Design Process" style="border-radius: 20px; box-shadow: var(--shadow);">
+                    </div>
+                    <div class="featured-text" data-reveal>
+                        <span class="category" style="color: var(--primary-color);">Custom Engineering</span>
+                        <h2>More than just <br>3D printing.</h2>
+                        <p>We combine high-quality additive manufacturing with expert IoT integration to create products that don't just look good, but work smarter.</p>
+                        <a href="about.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">Hexa<span>nest</span></a>
+                    <p style="color: var(--text-muted); max-width: 250px;">Next-generation 3D printed products and smart IoT systems for the modern era.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html?cat=accessories">Accessories</a></li>
+                        <li><a href="shop.html?cat=hardware">Hardware</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="https://wa.me/91XXXXXXXXXX">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hexanest. All rights reserved.</p>
+                <p>Designed with precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
