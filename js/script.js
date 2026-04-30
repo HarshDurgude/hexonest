@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    const savedTheme = localStorage.getItem('hexanest-theme');
+    const savedTheme = localStorage.getItem('hexonest-theme');
     if (savedTheme) {
         body.className = savedTheme;
     } else {
@@ -14,25 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.addEventListener('click', () => {
             if (body.classList.contains('light-theme')) {
                 body.classList.replace('light-theme', 'dark-theme');
-                localStorage.setItem('hexanest-theme', 'dark-theme');
+                localStorage.setItem('hexonest-theme', 'dark-theme');
             } else {
                 body.classList.replace('dark-theme', 'light-theme');
-                localStorage.setItem('hexanest-theme', 'light-theme');
+                localStorage.setItem('hexonest-theme', 'light-theme');
             }
         });
     }
 
-    // Mobile Menu Toggle
+    // Hamburger Menu Toggle (Mobile Menu)
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
         });
+
+        // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
             });
         });
     }
@@ -40,65 +44,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // WhatsApp Integration
     const phoneNumber = '9657201665';
 
+    // Global click listener for product WhatsApp buttons
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('whatsapp-btn')) {
             const button = e.target;
             const productName = button.getAttribute('data-product');
-            const message = `Hi Hexanest, I want to inquire about:\nProduct: ${productName}\nBudget:\nRequirements: `;
+            const message = `Hi Hexonest, I want to inquire about:\nProduct: ${productName}\nBudget:\nRequirements: `;
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         }
     });
 
+    // Contact Form to WhatsApp
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const messageText = document.getElementById('message').value;
+
+            const fullMessage = `New Message from Hexonest Website:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${messageText}`;
+            const encodedMsg = encodeURIComponent(fullMessage);
+            const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+        });
+    }
+
     // --- Product Data ---
     const products = {
         "earphone_winder": {
             name: "Minimal Earphone Winder",
             price: "₹199",
-            image: "assets/images/earphone_winder.jpg",
+            image: "assets/images/earphone_winder.webp",
             specs: { Material: "Premium PLA", Weight: "15g", Compatibility: "All Wired Earbuds", Warranty: "6 Months" },
             desc: "Keep your cables organized and tangle-free with this compact, elegant winder. Designed for daily durability."
         },
         "phone-stand": {
             name: "Wave Phone Stand",
             price: "₹249",
-            image: "assets/images/phone-stand.jpg",
+            image: "assets/images/phone-stand.webp",
             specs: { Material: "Reinforced PETG", Stability: "Anti-tip design", Viewing: "60-degree angle", Warranty: "1 Year" },
             desc: "Modern ergonomic design for hands-free viewing. Sturdy enough for large smartphones and small tablets."
         },
         "feather-bookmark": {
             name: "Feather Bookmark",
             price: "₹99",
-            image: "assets/images/feather-bookmark.jpg",
+            image: "assets/images/feather-bookmark.webp",
             specs: { Thickness: "0.8mm", Material: "Flexible PLA", Length: "150mm", Colors: "Multiple" },
             desc: "An ultra-thin, flexible bookmark that won't damage your book's spine. Beautiful feather-inspired geometry."
         },
         "paw-bookmark": {
             name: "Paw Print Bookmark",
             price: "₹99",
-            image: "assets/images/paw-bookmark.jpg",
+            image: "assets/images/paw-bookmark.webp",
             specs: { Material: "PLA+", Design: "Cute Paw", Clip: "Secure fit", Weight: "5g" },
             desc: "The perfect gift for book lovers and pet owners. Securely clips onto any page to keep your spot safe."
         },
         "shelf-clamp": {
             name: "Desk Edge Clamp",
             price: "₹299",
-            image: "assets/images/shelf-clamp.jpg",
+            image: "assets/images/shelf-clamp.webp",
             specs: { Max_Gap: "40mm", Material: "High-Strength ABS", Load: "Up to 1kg", Screw: "M6 Custom" },
             desc: "A heavy-duty screw-on clamp for your desk or shelf edge. Perfect for mounting accessories or cables."
         },
         "pen-holder": {
             name: "Clamp-on Pen Holder",
             price: "₹149",
-            image: "assets/images/pen-holder.jpg",
+            image: "assets/images/pen-holder.webp",
             specs: { Capacity: "3-5 Pens", Attachment: "Screw Clamp", Design: "Hexagonal", Material: "PLA" },
             desc: "Clear up your desk space with this clamp-on pen holder. Attaches to any surface up to 30mm thick."
         },
         "phone-hook": {
             name: "Headphone/Phone Hook",
             price: "₹249",
-            image: "assets/images/phone-hook.jpg",
+            image: "assets/images/phone-hook.webp",
             specs: { Material: "Tough Resin/PETG", Type: "Dual Purpose", Mount: "Screw Clamp", Surface: "Non-slip" },
             desc: "A versatile hook that holds both your headphones and smartphone. Save space and stay organized."
         }
