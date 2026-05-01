@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- WhatsApp Helper ---
     function openWhatsApp(productName) {
-        const message = `Hi Hexonest, I want to inquire about:\nProduct: ${productName}\nBudget:\nRequirements: `;
+        const message = `Hi Hexonest, I want to inquire about:\nProduct: ${productName}\nRequirements: `;
         const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     }
