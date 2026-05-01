@@ -1,28 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Toggle Logic
+    // --- Configuration ---
+    const PHONE_NUMBER = '9657201665';
+    // Add folder names here whenever you add a new product folder to assets/images/
+    const PRODUCT_DIRS = [
+        'earphone-winder',
+        'feather-bookmark',
+        'paw-bookmark',
+        'pen-holder',
+        'phone-hook',
+        'phone-stand',
+        'shelf-clamp',
+        'couple-keychain',
+        'name-keychain'
+    ];
+
+    let allProductsData = {};
+
+    // --- Theme Toggle Logic ---
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    const savedTheme = localStorage.getItem('hexonest-theme');
-    if (savedTheme) {
-        body.className = savedTheme;
-    } else {
-        body.className = 'dark-theme';
-    }
+    const savedTheme = localStorage.getItem('hexonest-theme') || 'dark-theme';
+    body.className = savedTheme;
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('light-theme')) {
-                body.classList.replace('light-theme', 'dark-theme');
-                localStorage.setItem('hexonest-theme', 'dark-theme');
-            } else {
-                body.classList.replace('dark-theme', 'light-theme');
-                localStorage.setItem('hexonest-theme', 'light-theme');
-            }
+            const newTheme = body.classList.contains('light-theme') ? 'dark-theme' : 'light-theme';
+            body.className = newTheme;
+            localStorage.setItem('hexonest-theme', newTheme);
         });
     }
 
-    // Hamburger Menu Toggle (Mobile Menu)
+    // --- Mobile Menu Logic ---
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
@@ -32,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuBtn.classList.toggle('active');
         });
 
-        // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -41,182 +49,192 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // WhatsApp Integration
-    const phoneNumber = '9657201665';
-
-    // Global click listener for product WhatsApp buttons
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('whatsapp-btn')) {
-            const button = e.target;
-            const productName = button.getAttribute('data-product');
-            const message = `Hi Hexonest, I want to inquire about:\nProduct: ${productName}\nBudget:\nRequirements: `;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    });
-
-    // Contact Form to WhatsApp
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const email = document.getElementById('email').value;
-            const messageText = document.getElementById('message').value;
-
-            const fullMessage = `New Message from Hexonest Website:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${messageText}`;
-            const encodedMsg = encodeURIComponent(fullMessage);
-            const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
-            
-            window.open(waUrl, '_blank');
-        });
+    // --- WhatsApp Helper ---
+    function openWhatsApp(productName) {
+        const message = `Hi Hexonest, I want to inquire about:\nProduct: ${productName}\nBudget:\nRequirements: `;
+        const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
     }
 
-    // --- Product Data ---
-    const products = {
-        "earphone_winder": {
-            name: "Minimal Earphone Winder",
-            price: "₹199",
-            image: "assets/images/earphone_winder.webp",
-            specs: { Material: "Premium PLA", Weight: "15g", Compatibility: "All Wired Earbuds", Warranty: "6 Months" },
-            desc: "Keep your cables organized and tangle-free with this compact, elegant winder. Designed for daily durability."
-        },
-        "phone-stand": {
-            name: "Wave Phone Stand",
-            price: "₹249",
-            image: "assets/images/phone-stand.webp",
-            specs: { Material: "Reinforced PETG", Stability: "Anti-tip design", Viewing: "60-degree angle", Warranty: "1 Year" },
-            desc: "Modern ergonomic design for hands-free viewing. Sturdy enough for large smartphones and small tablets."
-        },
-        "feather-bookmark": {
-            name: "Feather Bookmark",
-            price: "₹99",
-            image: "assets/images/feather-bookmark.webp",
-            specs: { Thickness: "0.8mm", Material: "Flexible PLA", Length: "150mm", Colors: "Multiple" },
-            desc: "An ultra-thin, flexible bookmark that won't damage your book's spine. Beautiful feather-inspired geometry."
-        },
-        "paw-bookmark": {
-            name: "Paw Print Bookmark",
-            price: "₹99",
-            image: "assets/images/paw-bookmark.webp",
-            specs: { Material: "PLA+", Design: "Cute Paw", Clip: "Secure fit", Weight: "5g" },
-            desc: "The perfect gift for book lovers and pet owners. Securely clips onto any page to keep your spot safe."
-        },
-        "shelf-clamp": {
-            name: "Desk Edge Clamp",
-            price: "₹299",
-            image: "assets/images/shelf-clamp.webp",
-            specs: { Max_Gap: "40mm", Material: "High-Strength ABS", Load: "Up to 1kg", Screw: "M6 Custom" },
-            desc: "A heavy-duty screw-on clamp for your desk or shelf edge. Perfect for mounting accessories or cables."
-        },
-        "pen-holder": {
-            name: "Clamp-on Pen Holder",
-            price: "₹149",
-            image: "assets/images/pen-holder.webp",
-            specs: { Capacity: "3-5 Pens", Attachment: "Screw Clamp", Design: "Hexagonal", Material: "PLA" },
-            desc: "Clear up your desk space with this clamp-on pen holder. Attaches to any surface up to 30mm thick."
-        },
-        "phone-hook": {
-            name: "Headphone/Phone Hook",
-            price: "₹249",
-            image: "assets/images/phone-hook.webp",
-            specs: { Material: "Tough Resin/PETG", Type: "Dual Purpose", Mount: "Screw Clamp", Surface: "Non-slip" },
-            desc: "A versatile hook that holds both your headphones and smartphone. Save space and stay organized."
-        }
-    };
+    // --- Core Product Loading Engine ---
+    async function init() {
+        await loadAllProducts();
+        renderGrids();
+        setupContactForm();
+    }
 
-    // --- Product Modal Logic ---
-    if (!document.getElementById('product-modal')) {
-        const modalHtml = `
-            <div id="product-modal" class="modal">
-                <div class="modal-content">
-                    <button class="modal-close">&times;</button>
-                    <div class="modal-img-side">
-                        <img id="modal-img" src="" alt="">
-                    </div>
-                    <div class="modal-info-side">
-                        <span class="category" id="modal-category">Premium Design</span>
-                        <h2 id="modal-title">Product Name</h2>
-                        <div class="modal-price" id="modal-price">₹0</div>
-                        <p id="modal-desc" style="color: var(--text-muted); margin-bottom: 30px;"></p>
-                        <div class="modal-specs">
-                            <h4>Specifications</h4>
-                            <ul id="modal-specs-list"></ul>
-                        </div>
-                        <button class="btn btn-primary whatsapp-btn" id="modal-wa-btn" data-product="">Order on WhatsApp</button>
-                    </div>
+    async function loadAllProducts() {
+        const fetchPromises = PRODUCT_DIRS.map(async (dir) => {
+            try {
+                const response = await fetch(`assets/images/${dir}/${dir}.json`);
+                if (!response.ok) throw new Error(`Failed to load ${dir}`);
+                const data = await response.json();
+                // Store path to image and directory key
+                data.image_path = `assets/images/${dir}/${dir}.webp`;
+                data.dir_key = dir;
+                allProductsData[dir] = data;
+            } catch (err) {
+                console.error("Error loading product:", dir, err);
+            }
+        });
+        await Promise.all(fetchPromises);
+    }
+
+    function renderGrids() {
+        const homeGrid = document.getElementById('home-featured-grid');
+        const shopGrid = document.getElementById('shop-all-grid');
+
+        const productArray = Object.values(allProductsData);
+
+        if (homeGrid) {
+            // Show first 3 for featured on home
+            const featured = productArray.slice(0, 3);
+            homeGrid.innerHTML = featured.map((p, index) => createProductCard(p, index)).join('');
+        }
+
+        if (shopGrid) {
+            shopGrid.innerHTML = productArray.map((p, index) => createProductCard(p, index)).join('');
+        }
+
+        // Initialize animations for newly created cards
+        observeNewElements();
+    }
+
+    function createProductCard(p, index) {
+        return `
+            <div class="product-card" data-reveal style="transition-delay: ${index * 0.1}s" data-product-key="${p.dir_key}">
+                <div class="product-img-wrapper">
+                    <img src="${p.image_path}" alt="${p.product_name}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <span class="category">Premium 3D Print</span>
+                    <h3>${p.product_name}</h3>
+                    <div class="product-price">₹${p.price}</div>
+                    ${window.location.pathname.includes('shop.html') ? 
+                        `<button class="btn btn-outline whatsapp-btn" onclick="event.stopPropagation();" data-product="${p.product_name}" style="width: 100%; margin-top: 15px;">Order on WhatsApp</button>` : ''}
                 </div>
             </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
     }
 
-    const modal = document.getElementById('product-modal');
-    const modalImg = document.getElementById('modal-img');
+    // Use event delegation for dynamic elements
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        const waBtn = e.target.closest('.whatsapp-btn');
 
+        if (waBtn) {
+            openWhatsApp(waBtn.getAttribute('data-product'));
+            return;
+        }
+
+        if (card) {
+            const key = card.getAttribute('data-product-key');
+            openProductModal(key);
+        }
+    });
+
+    // --- Modal Logic ---
     function openProductModal(key) {
-        const p = products[key];
+        const p = allProductsData[key];
         if (!p) return;
 
-        modalImg.src = p.image;
-        document.getElementById('modal-title').textContent = p.name;
-        document.getElementById('modal-price').textContent = p.price;
-        document.getElementById('modal-desc').textContent = p.desc;
-        document.getElementById('modal-wa-btn').setAttribute('data-product', p.name);
+        // Ensure modal exists in DOM
+        let modal = document.getElementById('product-modal');
+        if (!modal) {
+            createModalMarkup();
+            modal = document.getElementById('product-modal');
+        }
+
+        const modalImg = document.getElementById('modal-img');
+        modalImg.src = p.image_path;
+        document.getElementById('modal-title').textContent = p.product_name;
+        document.getElementById('modal-price').textContent = `₹${p.price}`;
+        document.getElementById('modal-desc').textContent = p.description;
+        document.getElementById('modal-wa-btn').setAttribute('data-product', p.product_name);
         
         const specsList = document.getElementById('modal-specs-list');
         specsList.innerHTML = "";
-        for (const [s, v] of Object.entries(p.specs)) {
-            specsList.innerHTML += `<li><span>${s.replace('_', ' ')}</span>${v}</li>`;
+        if (p.specifications) {
+            for (const [s, v] of Object.entries(p.specifications)) {
+                specsList.innerHTML += `<li><span>${s.charAt(0).toUpperCase() + s.slice(1).replace('_', ' ')}</span>${v}</li>`;
+            }
         }
 
         modal.classList.add('active');
         body.style.overflow = 'hidden';
     }
 
-    // Modal Close
-    document.querySelector('.modal-close')?.addEventListener('click', () => {
-        modal.classList.remove('active');
-        body.style.overflow = '';
-    });
+    function createModalMarkup() {
+        const markup = `
+            <div id="product-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                    <div class="modal-img-side">
+                        <img id="modal-img" src="" alt="">
+                    </div>
+                    <div class="modal-info-side">
+                        <span class="category">Product Details</span>
+                        <h2 id="modal-title"></h2>
+                        <div class="modal-price" id="modal-price"></div>
+                        <p id="modal-desc" style="color: var(--text-muted); margin-bottom: 30px;"></p>
+                        <div class="modal-specs">
+                            <h4>Specifications</h4>
+                            <ul id="modal-specs-list"></ul>
+                        </div>
+                        <button class="btn btn-primary whatsapp-btn" id="modal-wa-btn">Order on WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', markup);
 
-    modal?.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        // Close event for backdrop
+        const modal = document.getElementById('product-modal');
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+    }
+
+    window.closeModal = function() {
+        const modal = document.getElementById('product-modal');
+        if (modal) {
             modal.classList.remove('active');
             body.style.overflow = '';
         }
-    });
+    };
 
-    // Card Interaction Setup
-    document.querySelectorAll('.product-card').forEach(card => {
-        const key = card.getAttribute('data-product-key');
-        if (!key || !products[key]) return;
+    // --- Contact Form ---
+    function setupContactForm() {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
 
-        const imgWrapper = card.querySelector('.product-img-wrapper');
-        const title = card.querySelector('h3');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const first = document.getElementById('first-name').value;
+            const last = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const msg = document.getElementById('message').value;
 
-        if (imgWrapper) {
-            imgWrapper.onclick = () => openProductModal(key);
-        }
-        if (title) {
-            title.style.cursor = 'pointer';
-            title.onclick = () => openProductModal(key);
-        }
-    });
-
-    // Reveal on Scroll
-    const revealElements = document.querySelectorAll('[data-reveal]');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
-            }
+            const text = `New Message from Hexonest Website:\n\nName: ${first} ${last}\nEmail: ${email}\nMessage: ${msg}`;
+            const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         });
-    }, { threshold: 0.1 });
+    }
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    // --- Scroll Animations ---
+    function observeNewElements() {
+        const revealElements = document.querySelectorAll('[data-reveal]');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    init();
 });

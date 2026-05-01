@@ -52,49 +52,15 @@
         <section class="section">
             <div class="container">
                 <div class="section-header" data-reveal>
-                    <div>
+                    <div class="section-title-group">
                         <h2 class="section-title">New Arrivals</h2>
                         <p class="section-subtitle">The latest from our workshop</p>
                     </div>
-                    <a href="shop.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.75rem;">View All</a>
+                    <a href="shop.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.75rem; white-space: nowrap;">View All</a>
                 </div>
                 
-                <div class="grid">
-                    <!-- Featured Product 1 -->
-                    <div class="product-card" data-reveal data-product-key="phone-stand">
-                        <div class="product-img-wrapper">
-                            <img src="assets/images/phone-stand.webp" alt="Wave Design Phone Stand">
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Workspace</span>
-                            <h3>Wave Phone Stand</h3>
-                            <div class="product-price">₹249</div>
-                        </div>
-                    </div>
-
-                    <!-- Featured Product 2 -->
-                    <div class="product-card" data-reveal style="transition-delay: 0.1s;" data-product-key="earphone_winder">
-                        <div class="product-img-wrapper">
-                            <img src="assets/images/earphone_winder.webp" alt="Minimal Earphone Winder">
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Accessories</span>
-                            <h3>Earphone Winder</h3>
-                            <div class="product-price">₹199</div>
-                        </div>
-                    </div>
-
-                    <!-- Featured Product 3 -->
-                    <div class="product-card" data-reveal style="transition-delay: 0.2s;" data-product-key="shelf-clamp">
-                        <div class="product-img-wrapper">
-                            <img src="assets/images/shelf-clamp.webp" alt="Shelf Edge Clamp">
-                        </div>
-                        <div class="product-info">
-                            <span class="category">Hardware</span>
-                            <h3>Desk Edge Clamp</h3>
-                            <div class="product-price">₹299</div>
-                        </div>
-                    </div>
+                <div id="home-featured-grid" class="grid">
+                    <!-- Products loaded dynamically from JS -->
                 </div>
             </div>
         </section>
@@ -103,7 +69,7 @@
             <div class="container">
                 <div class="featured-row">
                     <div class="featured-img" data-reveal>
-                        <img src="assets/images/pen-holder.webp" alt="Hexonest Design Process" style="border-radius: 20px; box-shadow: var(--shadow);">
+                        <img src="assets/images/pen-holder/pen-holder.webp" alt="Hexonest Design Process" style="border-radius: 20px; box-shadow: var(--shadow);">
                     </div>
                     <div class="featured-text" data-reveal>
                         <span class="category" style="color: var(--primary-color);">Custom Engineering</span>

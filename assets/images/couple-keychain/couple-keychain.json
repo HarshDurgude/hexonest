@@ -1,0 +1,11 @@
+{
+  "product_id": 8,
+  "product_name": "Couple Kitchen",
+  "price": 199,
+  "description": "A creative couple-themed kitchen accessory featuring two interlocking pieces. Designed for organizing small tools or hanging items while adding a playful aesthetic to your space.",
+  "specifications": {
+    "material": "PLA",
+    "design": "Interlocking Couple Shape",
+    "finish": "Matte"
+  }
+}

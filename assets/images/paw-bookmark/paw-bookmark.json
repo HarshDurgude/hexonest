@@ -1,0 +1,12 @@
+{
+  "product_id": 3,
+  "product_name": "Paw Print Bookmark",
+  "price": 99,
+  "description": "The perfect gift for book lovers and pet owners. Securely clips onto any page to keep your spot safe.",
+  "specifications": {
+    "material": "PLA+",
+    "clip": "Secure fit",
+    "design": "Cute Paw",
+    "weight": "5g"
+  }
+}

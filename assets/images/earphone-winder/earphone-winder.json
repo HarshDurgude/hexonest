@@ -1,0 +1,12 @@
+{
+  "product_id": 1,
+  "product_name": "Minimal Earphone Winder",
+  "price": 199,
+  "description": "Keep your cables organized and tangle-free with this compact, elegant winder. Designed for daily durability.",
+  "specifications": {
+    "material": "Premium PLA",
+    "compatibility": "All Wired Earbuds",
+    "weight": "15g",
+    "warranty": "6 Months"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "product_id": 2,
+  "product_name": "Feather Bookmark",
+  "price": 99,
+  "description": "An ultra-thin, flexible bookmark that won't damage your book's spine. Beautiful feather-inspired geometry.",
+  "specifications": {
+    "thickness": "0.8mm",
+    "length": "150mm",
+    "material": "Flexible PLA",
+    "colors": "Multiple"
+  }
+}

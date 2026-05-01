@@ -1,0 +1,12 @@
+{
+  "product_id": 9,
+  "product_name": "Custom Name Keychain",
+  "price": 149,
+  "description": "A personalized 3D printed keychain featuring your custom name in bold raised lettering. Perfect for keys, bags, or gifting, with a clean and durable finish.",
+  "specifications": {
+    "material": "PLA",
+    "customization": "Name/Text",
+    "mount": "Keyring Hole",
+    "color": "orange-gray"
+  }
+}

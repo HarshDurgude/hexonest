@@ -1,0 +1,12 @@
+{
+  "product_id": 7,
+  "product_name": "Phone Hook",
+  "price": 249,
+  "description": "A versatile hook that holds both your headphones and smartphone. Save space and stay organized.",
+  "specifications": {
+    "material": "Tough Resin/PETG",
+    "mount": "Screw Clamp",
+    "type": "Dual Purpose",
+    "surface": "Non-slip"
+  }
+}

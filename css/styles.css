@@ -189,6 +189,12 @@ img {
     line-height: 1.6;
 }
 
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 /* Section Common */
 .section {
     padding: 120px 0;
@@ -437,10 +443,27 @@ footer {
     .hero { padding: 120px 0 60px; text-align: center; }
     .hero h1 { font-size: 2.75rem; letter-spacing: -1px; }
     .hero-content { margin: 0 auto; }
+    .hero-btns { justify-content: center; }
     
     .section { padding: 60px 0; }
-    .section-header { text-align: center; align-items: center; }
+    .section-header { 
+        flex-direction: column;
+        text-align: center; 
+        align-items: center;
+        gap: 20px;
+    }
     .section-title { font-size: 2.25rem; }
+
+    .featured-text .btn { margin-top: 20px; }
+
+    .section.bg-alt {
+        margin: 40px 0 !important;
+        border-radius: 20px !important;
+    }
+
+    .footer-col h4 {
+        margin-bottom: 15px;
+    }
 
     .grid { grid-template-columns: 1fr; gap: 30px; }
     
